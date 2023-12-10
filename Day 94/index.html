@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling and Capturing</title>
+    <style>
+        div {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        #outer {
+            background-color: #f0f0f0;
+        }
+        #inner {
+            background-color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="outer">
+    Outer Div (Bubble)
+    <div id="inner">
+        Inner Div (Capture)
+    </div>
+</div>
+
+<script>
+    document.getElementById('outer').addEventListener('click', function() {
+        console.log('Outer div event handler (Bubbling) triggered');
+    });
+
+    document.getElementById('inner').addEventListener('click', function() {
+        console.log('Inner div event handler (Bubbling) triggered');
+    });
+
+    document.getElementById('outer').addEventListener('click', function() {
+        console.log('Outer div event handler (Capturing) triggered');
+    }, true);
+
+    document.getElementById('inner').addEventListener('click', function() {
+        console.log('Inner div event handler (Capturing) triggered');
+    }, true);
+</script>
+
+</body>
+</html>
