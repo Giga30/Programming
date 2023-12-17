@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+
+        #gameCanvas {
+            border: 1px solid #000;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <input type="text" placeholder="Set Speed (default 100)" id="input">
+    <button id="reset">Reset Coordinates</button>
+
+    <script>
+        // Get the canvas element and its context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Get the reset button
+        const resetBtn = document.getElementById("reset");
+
+        // Get speed input
+        const speedInput = document.getElementById("input");
+
+        // Add speed input event listener
+        speedInput.addEventListener('input', function(i){
+            if(speedInput.value == ''){
+                playerSpeed = 100;
+            }else{
+                playerSpeed = parseInt(speedInput.value);
+            }
+            
+        })
+
+        // Add reset event listener
+        resetBtn.addEventListener("click", function(){
+            playerX = 0;
+            playerY = 0;
+        })
+
+        // Initialize player position
+        let playerX = 50;
+        let playerY = 50;
+
+        // Initialize player speed
+        let playerSpeed = 100;
+
+        // Initialize movement variables
+        let dx = 0;
+        let dy = 0;
+
+        // Initialize last frame time
+        let lastFrameTime = performance.now();
+
+        // Game loop function
+        function gameLoop() {
+            // Calculate deltaTime
+            const currentTime = performance.now();
+            const deltaTime = (currentTime - lastFrameTime) / 1000;
+            lastFrameTime = currentTime
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update game state (e.g., handle user input)
+            update(deltaTime);
+
+            // Render the game (e.g., draw the player)
+            render();
+
+            // Request the next animation frame
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Function to handle user input and update game state
+        function update(deltaTime) {
+            if (keys.d) {
+                dx = playerSpeed * deltaTime;
+            }
+            if(keys.a){
+                dx = -playerSpeed * deltaTime;
+            }
+            if(keys.w){
+                dy = -playerSpeed * deltaTime;
+            }
+            if(keys.s){
+                dy = playerSpeed * deltaTime;
+            }
+            move()
+            if (!keys.d) {
+                dx = 0;
+            }
+            if(!keys.a){
+                dx = 0;
+            }
+            if(!keys.w){
+                dy = 0;
+            }
+            if(!keys.s){
+                dy = 0;
+            }
+            
+        }
+
+        // Function to render the game
+        function render() {
+            // Draw the player on the canvas
+            ctx.fillRect(playerX, playerY, 30, 30);
+        }
+
+        function move(){
+            if(playerX >= 430){
+                playerX = -30;
+            }else if(playerX <= -30){
+                playerX = 430
+            }else if(playerY <= -30){
+                playerY = 430
+            }else if(playerY >= 430){
+                playerY = -30
+            }
+            
+            if(dx != 0 && dy != 0){
+                dx = dx * (Math.sqrt(2)/2)
+                dy = dy * (Math.sqrt(2)/2)
+            }
+            playerX += dx;
+            playerY += dy;
+            console.log(playerSpeed);
+        }
+
+        // Keyboard input handling
+        const keys = {};
+        window.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        // Start the game loop
+        gameLoop();
+    </script>
+</body>
+</html>

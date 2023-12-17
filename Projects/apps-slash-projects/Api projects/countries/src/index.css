@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+}
+
+body{
+
+}
+
+input{
+    display: block;
+    margin: 20px 10px 5px 10px;
+    padding: 5px;
+    border-radius: 9px;
+    border: none;
+}
+
+img{
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.container{
+    background-color: #000000;
+    color: #FF0000;
+    font-family: 'Open Sans', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    padding: 20px;
+    margin: 10px;
+    width: 400px;
+    height: 400px;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+}

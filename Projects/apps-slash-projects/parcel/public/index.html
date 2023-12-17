@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../src/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Bank</h1>
+    </header>
+    <main>
+        <div id="bal" class="window">
+            <p>balance: <span id="bal"></span></p>
+        </div>
+        <div id="methods" class="window">
+            <div id="withdraw" class="method-window">
+                <h3>withdraw</h3>
+                <input type="text" placeholder="Amount" id="with-inp">
+                <button id="with-sub">Submit</button>
+            </div>
+
+            <div id="deposit" class="method-window">
+                <h3>deposit</h3>
+                <input type="text" placeholder="Amount" id="dep-inp">
+                <button id="dep-sub">Submit</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../src/script.js"></script>
+</body>
+</html>

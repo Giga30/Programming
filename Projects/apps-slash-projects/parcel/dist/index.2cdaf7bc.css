@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+header {
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 10px;
+  display: flex;
+  position: absolute;
+  top: 0;
+}
+
+main {
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.window {
+  background-color: #00f;
+  border: 2px solid #000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+  display: flex;
+}
+
+.method-window {
+  background-color: #0ff;
+  border: 1px solid #000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  display: flex;
+}
+
+input {
+  width: 75px;
+}
+
+/*# sourceMappingURL=index.2cdaf7bc.css.map */
