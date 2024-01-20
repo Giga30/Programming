@@ -29,8 +29,8 @@ function App() {
         setCountries(sorted);
       })
       .catch(error => console.error('Error fetching data:', error));
-  }, []); // Empty dependency array ensures the effect runs only once, similar to componentDidMount
-  console.log(filteredCountries)
+  }, []);
+
   return (
     <div>
       <input value={input} onChange={updateInput} placeholder='Search for a country'></input>
